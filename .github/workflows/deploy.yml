@@ -29,6 +29,7 @@ jobs:
         run: npm run build
         env:
           VITE_ROUTER_MODE: hash
+          VITE_BASE: /littlelifeos/
 
       - uses: actions/configure-pages@v4
 
