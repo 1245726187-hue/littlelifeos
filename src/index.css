@@ -1,0 +1,116 @@
+@import "tailwindcss";
+
+@theme {
+  --color-calm-50: #faf9f7;
+  --color-calm-100: #f5f2ed;
+  --color-calm-200: #ebe5db;
+  --color-calm-300: #d9d0c3;
+  --color-calm-400: #b8a99a;
+  --color-calm-500: #8c7b6b;
+  --color-calm-600: #6b5d4f;
+  --color-calm-700: #544a40;
+  --color-calm-800: #3d3630;
+  --color-calm-900: #1a1816;
+
+  --color-warm-50: #fef9f4;
+  --color-warm-100: #fef0e2;
+  --color-warm-200: #fcdfbf;
+  --color-warm-300: #f8c48a;
+  --color-warm-400: #f5a052;
+  --color-warm-500: #f07d2b;
+  --color-warm-600: #e05e14;
+  --color-warm-700: #ba4813;
+  --color-warm-800: #943a17;
+  --color-warm-900: #783116;
+
+  --radius-card: 1.25rem;
+  --radius-button: 0.75rem;
+  --radius-input: 0.75rem;
+
+  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.06);
+  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
+
+  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: 'Noto Serif SC', ui-serif, Georgia, serif;
+}
+
+/* shadcn/ui CSS variables for generated components */
+:root {
+  --background: 40 30% 98%;
+  --foreground: 30 10% 10%;
+  --card: 40 30% 98%;
+  --card-foreground: 30 10% 10%;
+  --popover: 40 30% 98%;
+  --popover-foreground: 30 10% 10%;
+  --primary: 24 80% 45%;
+  --primary-foreground: 40 30% 98%;
+  --secondary: 35 20% 92%;
+  --secondary-foreground: 30 10% 15%;
+  --muted: 35 20% 94%;
+  --muted-foreground: 30 5% 45%;
+  --accent: 35 20% 92%;
+  --accent-foreground: 30 10% 15%;
+  --destructive: 0 70% 50%;
+  --destructive-foreground: 40 30% 98%;
+  --border: 35 15% 85%;
+  --input: 35 15% 85%;
+  --ring: 24 80% 45%;
+  --radius: 0.75rem;
+}
+
+* {
+  border-color: hsl(var(--border));
+}
+
+body {
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 4px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: hsl(var(--muted-foreground) / 0.2);
+  border-radius: 999px;
+}
+
+/* Glass utility */
+.glass {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+}
+
+.glass-subtle {
+  background: rgba(255, 255, 255, 0.4);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+}
+
+/* Gradient backgrounds */
+.bg-page {
+  background: linear-gradient(135deg, #fef9f4 0%, #faf9f7 30%, #f5f2ed 60%, #fef9f4 100%);
+}
+
+.bg-card-warm {
+  background: linear-gradient(135deg, rgba(254, 240, 226, 0.5) 0%, rgba(250, 249, 247, 0.5) 100%);
+}
+
+/* Pulse animation for AI loading */
+@keyframes soft-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+.animate-soft-pulse {
+  animation: soft-pulse 2s ease-in-out infinite;
+}
