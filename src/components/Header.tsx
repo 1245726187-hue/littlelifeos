@@ -1,33 +1,31 @@
-import { useNavigate, useLocation } from 'react-router-dom'
+import { useNavigate } from 'react-router-dom'
 import { Settings } from 'lucide-react'
 import { useStreak } from '@/hooks/useStreak'
-import StreakCounter from '@/components/StreakCounter'
 import { APP_NAME } from '@/constants'
 
 export default function Header() {
   const navigate = useNavigate()
-  const location = useLocation()
   const { currentStreak } = useStreak()
 
-  const isHome = location.pathname === '/'
-
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 glass-subtle border-b border-white/50">
-      <div className="mx-auto flex h-14 max-w-5xl items-center justify-between px-4 md:px-6">
+    <header className="fixed top-0 left-0 right-0 z-50 bg-transparent">
+      <div className="mx-auto flex h-12 max-w-5xl items-center justify-between px-5 md:px-6">
         <button
           onClick={() => navigate('/')}
-          className="text-base font-semibold text-calm-900 font-[family-name:var(--font-serif)] tracking-tight"
+          className="text-[15px] font-semibold text-app-gray-900 tracking-tight"
         >
           {APP_NAME}
         </button>
 
-        <div className="flex items-center gap-3">
-          {!isHome && currentStreak > 0 && (
-            <StreakCounter days={currentStreak} variant="header" />
+        <div className="flex items-center gap-1">
+          {currentStreak > 0 && (
+            <span className="text-[13px] font-medium text-app-orange mr-1">
+              {currentStreak}天
+            </span>
           )}
           <button
             onClick={() => navigate('/settings')}
-            className="flex h-9 w-9 items-center justify-center rounded-full text-calm-400 hover:bg-calm-100 hover:text-calm-600 transition-colors"
+            className="flex h-8 w-8 items-center justify-center rounded-full text-app-gray-400 hover:bg-app-gray-100 hover:text-app-gray-600 transition-colors"
           >
             <Settings className="h-4 w-4" />
           </button>

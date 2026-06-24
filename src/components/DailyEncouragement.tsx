@@ -7,7 +7,7 @@ export default function DailyEncouragement() {
   const [visible, setVisible] = useState(false)
 
   useEffect(() => {
-    const t = setTimeout(() => setVisible(true), 400)
+    const t = setTimeout(() => setVisible(true), 300)
     return () => clearTimeout(t)
   }, [])
 
@@ -15,10 +15,10 @@ export default function DailyEncouragement() {
     <AnimatePresence>
       {visible && (
         <motion.p
-          initial={{ opacity: 0, y: 8 }}
+          initial={{ opacity: 0, y: 4 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, ease: 'easeOut' }}
-          className="text-center text-sm text-calm-500 font-[family-name:var(--font-serif)] italic mt-2"
+          transition={{ duration: 0.5, ease: 'easeOut' }}
+          className="text-[13px] text-app-gray-400 mt-2"
         >
           「{text}」
         </motion.p>

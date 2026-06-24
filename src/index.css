@@ -1,61 +1,65 @@
 @import "tailwindcss";
 
 @theme {
-  --color-calm-50: #faf9f7;
-  --color-calm-100: #f5f2ed;
-  --color-calm-200: #ebe5db;
-  --color-calm-300: #d9d0c3;
-  --color-calm-400: #b8a99a;
-  --color-calm-500: #8c7b6b;
-  --color-calm-600: #6b5d4f;
-  --color-calm-700: #544a40;
-  --color-calm-800: #3d3630;
-  --color-calm-900: #1a1816;
+  /* Apple Health-inspired palette */
+  --color-app-bg: #f2f2f7;
+  --color-app-card: #ffffff;
+  --color-app-gray-50: #f9f9fb;
+  --color-app-gray-100: #f2f2f7;
+  --color-app-gray-200: #e5e5ea;
+  --color-app-gray-300: #d1d1d6;
+  --color-app-gray-400: #c7c7cc;
+  --color-app-gray-500: #aeaeb2;
+  --color-app-gray-600: #8e8e93;
+  --color-app-gray-700: #636366;
+  --color-app-gray-800: #48484a;
+  --color-app-gray-900: #1c1c1e;
 
-  --color-warm-50: #fef9f4;
-  --color-warm-100: #fef0e2;
-  --color-warm-200: #fcdfbf;
-  --color-warm-300: #f8c48a;
-  --color-warm-400: #f5a052;
-  --color-warm-500: #f07d2b;
-  --color-warm-600: #e05e14;
-  --color-warm-700: #ba4813;
-  --color-warm-800: #943a17;
-  --color-warm-900: #783116;
+  --color-app-blue: #007aff;
+  --color-app-blue-light: #e8f2ff;
+  --color-app-green: #34c759;
+  --color-app-green-light: #e8f8ed;
+  --color-app-orange: #ff9500;
+  --color-app-orange-light: #fff4e5;
+  --color-app-red: #ff3b30;
+  --color-app-red-light: #ffebea;
+  --color-app-teal: #5ac8fa;
+  --color-app-teal-light: #e8f7fd;
+  --color-app-purple: #af52de;
+  --color-app-purple-light: #f3e8fa;
+  --color-app-pink: #ff2d55;
+  --color-app-pink-light: #ffe8ec;
 
-  --radius-card: 1.25rem;
-  --radius-button: 0.75rem;
-  --radius-input: 0.75rem;
+  --radius-sm: 0.625rem;
+  --radius-md: 0.875rem;
+  --radius-lg: 1rem;
+  --radius-xl: 1.25rem;
 
-  --shadow-soft: 0 4px 24px rgba(0, 0, 0, 0.06);
-  --shadow-glass: 0 8px 32px rgba(0, 0, 0, 0.08);
-  --shadow-card: 0 2px 16px rgba(0, 0, 0, 0.04), 0 0 0 1px rgba(0, 0, 0, 0.03);
-
-  --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
-  --font-serif: 'Noto Serif SC', ui-serif, Georgia, serif;
+  --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'SF Pro Display', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'SF Mono', 'JetBrains Mono', ui-monospace, monospace;
 }
 
-/* shadcn/ui CSS variables for generated components */
+/* shadcn/ui CSS variables — Apple Health palette */
 :root {
-  --background: 40 30% 98%;
-  --foreground: 30 10% 10%;
-  --card: 40 30% 98%;
-  --card-foreground: 30 10% 10%;
-  --popover: 40 30% 98%;
-  --popover-foreground: 30 10% 10%;
-  --primary: 24 80% 45%;
-  --primary-foreground: 40 30% 98%;
-  --secondary: 35 20% 92%;
-  --secondary-foreground: 30 10% 15%;
-  --muted: 35 20% 94%;
-  --muted-foreground: 30 5% 45%;
-  --accent: 35 20% 92%;
-  --accent-foreground: 30 10% 15%;
-  --destructive: 0 70% 50%;
-  --destructive-foreground: 40 30% 98%;
-  --border: 35 15% 85%;
-  --input: 35 15% 85%;
-  --ring: 24 80% 45%;
+  --background: 240 8% 97%;
+  --foreground: 240 3% 12%;
+  --card: 0 0% 100%;
+  --card-foreground: 240 3% 12%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 240 3% 12%;
+  --primary: 211 100% 50%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 240 8% 95%;
+  --secondary-foreground: 240 3% 20%;
+  --muted: 240 8% 95%;
+  --muted-foreground: 240 3% 46%;
+  --accent: 240 8% 95%;
+  --accent-foreground: 240 3% 20%;
+  --destructive: 0 85% 58%;
+  --destructive-foreground: 0 0% 100%;
+  --border: 240 6% 90%;
+  --input: 240 6% 90%;
+  --ring: 211 100% 50%;
   --radius: 0.75rem;
 }
 
@@ -64,53 +68,69 @@
 }
 
 body {
-  background-color: hsl(var(--background));
+  background: var(--color-app-bg);
   color: hsl(var(--foreground));
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  letter-spacing: -0.01em;
 }
 
-/* Custom scrollbar */
+/* Apple-style scrollbar */
 ::-webkit-scrollbar {
-  width: 4px;
+  width: 3px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: hsl(var(--muted-foreground) / 0.2);
+  background: hsl(var(--muted-foreground) / 0.15);
   border-radius: 999px;
 }
 
-/* Glass utility */
-.glass {
-  background: rgba(255, 255, 255, 0.6);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+/* Glass nav — only for bottom bar, very subtle */
+.glass-nav {
+  background: rgba(242, 242, 247, 0.82);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
 }
 
-.glass-subtle {
-  background: rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
+/* Apple-style card: flat white, subtle rounded corners */
+.card-apple {
+  background: white;
+  border-radius: var(--radius-lg);
 }
 
-/* Gradient backgrounds */
+/* Page background */
 .bg-page {
-  background: linear-gradient(135deg, #fef9f4 0%, #faf9f7 30%, #f5f2ed 60%, #fef9f4 100%);
-}
-
-.bg-card-warm {
-  background: linear-gradient(135deg, rgba(254, 240, 226, 0.5) 0%, rgba(250, 249, 247, 0.5) 100%);
+  background: var(--color-app-bg);
 }
 
 /* Pulse animation for AI loading */
 @keyframes soft-pulse {
-  0%, 100% { opacity: 0.3; }
-  50% { opacity: 0.6; }
+  0%, 100% { opacity: 0.25; }
+  50% { opacity: 0.55; }
 }
 .animate-soft-pulse {
   animation: soft-pulse 2s ease-in-out infinite;
+}
+
+/* Apple-style large title */
+.apple-title {
+  font-size: 2rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
+
+.apple-section-header {
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: -0.005em;
+  text-transform: none;
+}
+
+/* Tap highlight override */
+* {
+  -webkit-tap-highlight-color: transparent;
 }

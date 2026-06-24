@@ -4,7 +4,8 @@ import Home from '@/components/Home'
 import ApiSetup from '@/components/ApiSetup'
 import FoodPlanner from '@/components/FoodPlanner'
 import LinkWalker from '@/components/LinkWalker'
-import TaskCrusher from '@/components/TaskCrusher'
+import TodoList from '@/components/TodoList'
+import Browse from '@/components/Browse'
 import AchievementLog from '@/components/AchievementLog'
 import Settings from '@/components/Settings'
 
@@ -16,7 +17,8 @@ const routes = [
       { index: true, element: <Home /> },
       { path: 'food', element: <FoodPlanner /> },
       { path: 'links', element: <LinkWalker /> },
-      { path: 'tasks', element: <TaskCrusher /> },
+      { path: 'tasks', element: <TodoList /> },
+      { path: 'browse', element: <Browse /> },
       { path: 'achievements', element: <AchievementLog /> },
       { path: 'settings', element: <Settings /> },
     ],

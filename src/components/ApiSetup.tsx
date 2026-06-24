@@ -14,7 +14,6 @@ export default function ApiSetup() {
   const [saving, setSaving] = useState(false)
   const [error, setError] = useState('')
 
-  // If already set up, redirect to home
   if (hasApiKey && onboardingComplete) {
     navigate('/', { replace: true })
     return null
@@ -23,137 +22,52 @@ export default function ApiSetup() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const trimmed = key.trim()
-    if (!trimmed) {
-      setError('请输入 API Key')
-      return
-    }
-    if (!trimmed.startsWith('sk-')) {
-      setError('API Key 格式不正确，应以 sk- 开头')
-      return
-    }
-
-    setSaving(true)
-    setError('')
-
-    // Small delay for animation feel
+    if (!trimmed) { setError('请输入 API Key'); return }
+    if (!trimmed.startsWith('sk-')) { setError('API Key 格式不正确，应以 sk- 开头'); return }
+    setSaving(true); setError('')
     await new Promise((r) => setTimeout(r, 600))
     setApiKey(trimmed)
     setSaving(false)
-
     navigate('/', { replace: true })
   }
 
   return (
-    <div className="bg-page min-h-screen flex items-center justify-center p-4">
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, ease: 'easeOut' }}
-        className="w-full max-w-md"
-      >
-        {/* Logo & Title */}
-        <div className="text-center mb-10">
-          <motion.div
-            initial={{ scale: 0 }}
-            animate={{ scale: 1 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.2 }}
-            className="inline-flex items-center justify-center h-16 w-16 rounded-2xl bg-warm-50 mb-6"
-          >
-            <Sparkles className="h-8 w-8 text-warm-500" />
+    <div className="bg-app-bg min-h-screen flex items-center justify-center p-5">
+      <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, ease: 'easeOut' }} className="w-full max-w-sm">
+        <div className="text-center mb-8">
+          <motion.div initial={{ scale: 0 }} animate={{ scale: 1 }} transition={{ type: 'spring', stiffness: 300, damping: 20, delay: 0.2 }}
+            className="inline-flex items-center justify-center h-14 w-14 rounded-2xl bg-app-blue-light mb-5">
+            <Sparkles className="h-7 w-7 text-app-blue" />
           </motion.div>
-          <motion.h1
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.4 }}
-            className="text-2xl font-semibold text-calm-900 font-[family-name:var(--font-serif)] mb-3"
-          >
-            欢迎来到你的 {APP_NAME}
+          <motion.h1 initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
+            className="text-[22px] font-bold text-app-gray-900 tracking-tight mb-2">
+            欢迎来到 {APP_NAME}
           </motion.h1>
-          <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
-            className="text-sm text-calm-500 leading-relaxed"
-          >
-            {APP_DESCRIPTION}
-          </motion.p>
+          <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}
+            className="text-[14px] text-app-gray-500 leading-relaxed">{APP_DESCRIPTION}</motion.p>
         </div>
 
-        {/* Form Card */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.6, duration: 0.5 }}
-          className="bg-white/70 backdrop-blur-sm border border-white/80 rounded-[var(--radius-card)] shadow-[var(--shadow-card)] p-6"
-        >
-          <form onSubmit={handleSubmit} className="space-y-5">
+        <motion.div initial={{ opacity: 0, y: 14 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.6 }}
+          className="bg-app-card rounded-xl p-5 shadow-none">
+          <form onSubmit={handleSubmit} className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-calm-700 mb-2">
-                DeepSeek API Key
-              </label>
-              <Input
-                type="password"
-                placeholder="sk-..."
-                value={key}
-                onChange={(e) => {
-                  setKey(e.target.value)
-                  setError('')
-                }}
-                className="font-mono text-sm"
-                autoFocus
-              />
-              {error && (
-                <motion.p
-                  initial={{ opacity: 0, y: -4 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-xs text-red-500 mt-2"
-                >
-                  {error}
-                </motion.p>
-              )}
-              <p className="text-xs text-calm-400 mt-2 flex items-center gap-1.5">
-                <Shield className="h-3 w-3" />
-                你的 Key 只会保存在你的浏览器本地，不会上传。
-              </p>
+              <label className="block text-[13px] font-medium text-app-gray-700 mb-1.5">DeepSeek API Key</label>
+              <Input type="password" placeholder="sk-..." value={key} onChange={(e) => { setKey(e.target.value); setError('') }}
+                className="font-mono text-[13px] bg-app-gray-50 border-app-gray-200 rounded-lg shadow-none" autoFocus />
+              {error && <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-[12px] text-app-red mt-1.5">{error}</motion.p>}
+              <p className="text-[11px] text-app-gray-400 mt-2 flex items-center gap-1"><Shield className="h-3 w-3" />Key 只保存在浏览器本地，不会上传。</p>
             </div>
-
-            <Button
-              type="submit"
-              className="w-full h-11 text-sm font-medium"
-              disabled={saving}
-            >
-              {saving ? (
-                <span className="flex items-center gap-2">
-                  <span className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />
-                  正在验证...
-                </span>
-              ) : (
-                <span className="flex items-center gap-2">
-                  开始使用
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              )}
+            <Button type="submit" className="w-full h-11 rounded-lg bg-app-gray-900 hover:bg-app-gray-800 text-white text-[15px]" disabled={saving}>
+              {saving ? <span className="flex items-center gap-2"><span className="h-4 w-4 rounded-full border-2 border-white/30 border-t-white animate-spin" />验证中...</span> :
+                <span className="flex items-center gap-2">开始使用 <ArrowRight className="h-4 w-4" /></span>}
             </Button>
           </form>
         </motion.div>
 
-        {/* Footer */}
-        <motion.p
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 0.8 }}
-          className="text-center text-xs text-calm-400 mt-8"
-        >
+        <motion.p initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.8 }}
+          className="text-center text-[11px] text-app-gray-400 mt-6">
           还没有 API Key？前往{' '}
-          <a
-            href="https://platform.deepseek.com/api_keys"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-warm-500 underline underline-offset-2 hover:text-warm-600"
-          >
-            DeepSeek 开放平台
-          </a>{' '}
-          获取
+          <a href="https://platform.deepseek.com/api_keys" target="_blank" rel="noopener noreferrer" className="text-app-blue underline underline-offset-2">DeepSeek 开放平台</a> 获取
         </motion.p>
       </motion.div>
     </div>

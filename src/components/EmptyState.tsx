@@ -1,30 +1,23 @@
 import { motion } from 'framer-motion'
-import { cn } from '@/lib/utils'
 
 interface EmptyStateProps {
   icon?: string
   title: string
   description?: string
-  className?: string
 }
 
-export default function EmptyState({ icon = '🌱', title, description, className }: EmptyStateProps) {
+export default function EmptyState({ icon = '🌱', title, description }: EmptyStateProps) {
   return (
     <motion.div
-      initial={{ opacity: 0, scale: 0.95 }}
+      initial={{ opacity: 0, scale: 0.97 }}
       animate={{ opacity: 1, scale: 1 }}
       transition={{ duration: 0.4, ease: 'easeOut' }}
-      className={cn(
-        'flex flex-col items-center justify-center py-16 text-center',
-        className
-      )}
+      className="flex flex-col items-center justify-center py-20 text-center"
     >
-      <span className="text-5xl mb-4">{icon}</span>
-      <h3 className="text-lg font-medium text-calm-700 mb-2">{title}</h3>
+      <span className="text-4xl mb-3">{icon}</span>
+      <h3 className="text-[15px] font-medium text-app-gray-600 mb-1">{title}</h3>
       {description && (
-        <p className="text-sm text-calm-500 max-w-xs leading-relaxed">
-          {description}
-        </p>
+        <p className="text-[13px] text-app-gray-400 max-w-xs leading-relaxed">{description}</p>
       )}
     </motion.div>
   )

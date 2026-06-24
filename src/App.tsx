@@ -27,14 +27,14 @@ export default function App() {
   return (
     <div className="bg-page min-h-screen">
       <Header />
-      <main className="mx-auto max-w-5xl px-4 pb-24 pt-20 md:px-6 md:pb-8">
+      <main className="mx-auto max-w-2xl px-5 pb-28 pt-14 md:px-6 md:pb-8">
         <AnimatePresence mode="wait">
           <motion.div
             key={location.pathname}
-            initial={{ opacity: 0, y: 12 }}
+            initial={{ opacity: 0, y: 6 }}
             animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -12 }}
-            transition={{ duration: 0.25, ease: 'easeInOut' }}
+            exit={{ opacity: 0, y: -6 }}
+            transition={{ duration: 0.2, ease: 'easeInOut' }}
           >
             <Outlet />
           </motion.div>
