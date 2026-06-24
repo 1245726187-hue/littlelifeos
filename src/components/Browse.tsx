@@ -1,8 +1,15 @@
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { Utensils, Link, Moon, Settings, ChevronRight } from 'lucide-react'
+import { Utensils, Link, Moon, Zap, Settings, ChevronRight } from 'lucide-react'
 
 const ITEMS = [
+  {
+    title: '拖延症粉碎机',
+    desc: 'AI 拆解大任务为小步骤',
+    icon: Zap,
+    color: 'bg-app-teal-light text-app-teal',
+    path: '/crusher',
+  },
   {
     title: '这周吃什么',
     desc: 'AI 搭配今日菜单',

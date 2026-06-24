@@ -31,7 +31,7 @@ export default function Home() {
 
   const quickActions = [
     { icon: Utensils, label: '吃什么', path: '/food', color: 'bg-app-orange-light text-app-orange' },
-    { icon: Zap, label: '粉碎任务', path: '/tasks', color: 'bg-app-teal-light text-app-teal' },
+    { icon: Zap, label: '粉碎任务', path: '/crusher', color: 'bg-app-teal-light text-app-teal' },
     { icon: Link, label: '收藏链接', path: '/links', color: 'bg-app-blue-light text-app-blue' },
     { icon: Moon, label: '今日记录', path: '/achievements', color: 'bg-app-purple-light text-app-purple' },
   ]
